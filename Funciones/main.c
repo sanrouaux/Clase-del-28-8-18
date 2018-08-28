@@ -13,7 +13,7 @@ En 1, tengo que pensar: queDevuelve, comoSeLlama, (queRecibe)
 void sumar1 (void); // prototipo de la funcion sumar1. Se escribe arriba del main
 void sumar2 (int, int); // prototipo de la funcion sumar2. Los nombres de las variables pueden estar o no estar
 int sumar3 (void); // Prototipo de la función sumar3
-
+int sumar4 (int, int); // prototipo de la funcion sumar4
 
 int main()
 {
@@ -23,6 +23,7 @@ int main()
 
     int numeroUno;
     int numeroDos;
+    int suma;
 
     printf("Ingrese el primer numero: ");
     scanf("%d", &numeroUno);
@@ -34,13 +35,21 @@ int main()
 
     system("pause");
 
-    int suma;
     suma = sumar3(); // Llamado de sumar3
+    printf("El resultado es %d \n", suma);
+
+
+    system("pause");
+
+    printf("Ingrese el primer numero: ");
+    scanf("%d", &numeroUno);
+
+    printf("Ingrese el segundo numero: ");
+    scanf("%d", &numeroDos);
+
+    suma = sumar4(numeroUno, numeroDos);
+
     printf("El resultado es %d", suma);
-
-
-
-
 
     return 0;
 }
@@ -89,4 +98,13 @@ int sumar3 (void)
 
     return suma;
 
+}
+
+int sumar4 (int numeroUno, int numeroDos)
+{
+    int suma;
+
+    suma = numeroUno + numeroDos;
+
+    return suma;
 }
