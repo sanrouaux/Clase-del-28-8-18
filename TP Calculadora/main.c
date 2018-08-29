@@ -2,13 +2,14 @@
 #include <stdlib.h>
 
 
-int ingresarNumero (void);
+int ingresarNumero (char[]);
 int sumar(int, int);
 int restar(int, int);
-int dividir(int, int);
+float dividir(int, int);
 int multiplicar(int, int);
-int sacarFactorial(int, int);
-void imprimirResultado (int);
+int sacarFactorial(int);
+void imprimirResultado (char[], int);
+void imprimirResultadoDivision (char[], float);
 
 
 int main()
@@ -17,12 +18,13 @@ int main()
     int numeroUno;
     int numeroDos;
     int resultado;
+    float resultadoDivision;
 
 
     do
     {
-        numeroUno = ingresarNumero();
-        numeroDos = ingresarNumero();
+        numeroUno = ingresarNumero("Ingrese el primer numero: ");
+        numeroDos = ingresarNumero("Ingrese el segundo numero: ");
 
         printf("\nQue accion desea ralizar?");
         printf("\n1. Calcular la suma de %d y %d", numeroUno, numeroDos);
@@ -39,35 +41,39 @@ int main()
         {
         case 1:
             resultado = sumar(numeroUno, numeroDos);
-            imprimirResultado(resultado);
+            imprimirResultado("El resultado de la suma es %d\n", resultado);
             break;
 
         case 2:
             resultado = restar(numeroUno, numeroDos);
-            imprimirResultado(resultado);
+            imprimirResultado("El resultado de la resta es %d\n", resultado);
             break;
 
         case 3:
             if(numeroDos == 0)
             {
-                printf("\nNo es posible dividir por cero\n");
+                printf("No es posible dividir por cero\n");
             }
             else
             {
-                resultado = dividir(numeroUno, numeroDos);
-                imprimirResultado(resultado);
+                resultadoDivision = dividir(numeroUno, numeroDos);
+                imprimirResultadoDivision("El resultado de la division es %d\n", resultado);
             }
             break;
 
         case 4:
             resultado = multiplicar(numeroUno, numeroDos);
-            imprimirResultado(resultado);
+            imprimirResultado("El resultado de la multiplicacion es %d\n", resultado);
             break;
 
         case 5:
-            //factorial
+            resultado = sacarFactorial(numeroUno);
+            imprimirResultado("El factorial del primer numero es %d\n", resultado);
+            resultado = sacarFactorial(numeroDos);
+            imprimirResultado("El factorial del segundo numero es %d\n", resultado);
+            break;
 
-         case 6:
+        case 6:
             break;
 
         default:
@@ -85,13 +91,30 @@ int main()
 }
 
 
-int ingresarNumero(void)
+/** \brief
+ *
+ * \param
+ * \param
+ * \return
+ *
+ */
+
+int ingresarNumero(char texto[])
 {
     int numero;
-    printf("\nIngrese un numero: ");
+    printf("%s", texto);
     scanf("%d",&numero);
     return numero;
 }
+
+
+/** \brief
+ *
+ * \param
+ * \param
+ * \return
+ *
+ */
 
 int sumar(int numeroUno, int numeroDos)
 {
@@ -100,6 +123,15 @@ int sumar(int numeroUno, int numeroDos)
     return resultado;
 }
 
+
+/** \brief
+ *
+ * \param
+ * \param
+ * \return
+ *
+ */
+
 int restar(int numeroUno, int numeroDos)
 {
     int resultado;
@@ -107,12 +139,29 @@ int restar(int numeroUno, int numeroDos)
     return resultado;
 }
 
-int dividir(int numeroUno, int numeroDos)
+
+/** \brief
+ *
+ * \param
+ * \param
+ * \return
+ *
+ */
+
+float dividir(int numeroUno, int numeroDos)
 {
-    int resultado;
-    resultado = numeroUno / numeroDos;
+    float resultado;
+    resultado = (float)numeroUno / (float)numeroDos;
     return resultado;
 }
+
+/** \brief
+ *
+ * \param
+ * \param
+ * \return
+ *
+ */
 
 int multiplicar(int numeroUno, int numeroDos)
 {
@@ -121,12 +170,42 @@ int multiplicar(int numeroUno, int numeroDos)
     return resultado;
 }
 
-int sacarFactorial(int numeroUno, int numeroDos)
-{
+/** \brief
+ *
+ * \param
+ * \param
+ * \return
+ *
+ */
 
+int sacarFactorial(int numero)
+{
+    int resultado;
+    if(numero == 1)
+    {
+        return 1;
+    }
+    else
+    {
+        resultado = numero * sacarFactorial(numero-1);
+        return resultado;
+    }
 }
 
-void imprimirResultado(int resultado)
+/** \brief
+ *
+ * \param
+ * \param
+ * \return
+ *
+ */
+
+void imprimirResultado(char texto[], int resultado)
 {
-    printf("El resultado es %d \n",resultado);
+    printf(texto, resultado);
+}
+
+void imprimirResultadoDivision(char texto[], float resultado)
+{
+    printf(texto, resultado);
 }
