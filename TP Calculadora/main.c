@@ -1,11 +1,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+
+int ingresarNumero (void);
 int sumar(int, int);
 int restar(int, int);
 int dividir(int, int);
 int multiplicar(int, int);
 int sacarFactorial(int, int);
+void imprimirResultado (int);
 
 
 int main()
@@ -15,13 +18,11 @@ int main()
     int numeroDos;
     int resultado;
 
+
     do
     {
-        printf("Ingrese el primer numero: ");
-        scanf("%d", &numeroUno);
-
-        printf("\nIngrese el segundo numero: ");
-        scanf("%d", &numeroDos);
+        numeroUno = ingresarNumero();
+        numeroDos = ingresarNumero();
 
         printf("\nQue accion desea ralizar?");
         printf("\n1. Calcular la suma de %d y %d", numeroUno, numeroDos);
@@ -29,6 +30,7 @@ int main()
         printf("\n3. Calcular la division entre %d y %d", numeroUno, numeroDos);
         printf("\n4. Calcular la multiplicacion entre %d y %d", numeroUno, numeroDos);
         printf("\n5. Calcular el factorial de %d y de %d", numeroUno, numeroDos);
+        printf("\n6. Salir");
         printf("\nIngrese una opcion: ");
         scanf("%d", &opcion);
 
@@ -37,33 +39,39 @@ int main()
         {
         case 1:
             resultado = sumar(numeroUno, numeroDos);
-            printf("\nEl resultado de %d+%d es: %d\n", numeroUno, numeroDos, resultado);
+            imprimirResultado(resultado);
             break;
 
         case 2:
             resultado = restar(numeroUno, numeroDos);
-            printf("\nEl resultado de %d-%d es: %d\n", numeroUno, numeroDos, resultado);
+            imprimirResultado(resultado);
             break;
 
         case 3:
-            if(numeroDos == 0){
+            if(numeroDos == 0)
+            {
                 printf("\nNo es posible dividir por cero\n");
-            } else {
+            }
+            else
+            {
                 resultado = dividir(numeroUno, numeroDos);
-                printf("\nEl resultado de %d/%d es: %d\n", numeroUno, numeroDos, resultado);
+                imprimirResultado(resultado);
             }
             break;
 
         case 4:
             resultado = multiplicar(numeroUno, numeroDos);
-            printf("\nEl resultado de %d*%d es: %d\n", numeroUno, numeroDos, resultado);
+            imprimirResultado(resultado);
             break;
 
         case 5:
+            //factorial
+
+         case 6:
             break;
 
         default:
-            printf("No ingresó una opción correcta");
+            printf("Ingrese una opcion correcta");
 
         }
 
@@ -71,11 +79,19 @@ int main()
         system("cls");
 
     }
-    while(opcion != 5);
+    while(opcion != 6);
 
     return 0;
 }
 
+
+int ingresarNumero(void)
+{
+    int numero;
+    printf("\nIngrese un numero: ");
+    scanf("%d",&numero);
+    return numero;
+}
 
 int sumar(int numeroUno, int numeroDos)
 {
@@ -93,17 +109,24 @@ int restar(int numeroUno, int numeroDos)
 
 int dividir(int numeroUno, int numeroDos)
 {
-    float resultado;
+    int resultado;
     resultado = numeroUno / numeroDos;
     return resultado;
 }
 
 int multiplicar(int numeroUno, int numeroDos)
 {
-
+    int resultado;
+    resultado = numeroUno * numeroDos;
+    return resultado;
 }
 
 int sacarFactorial(int numeroUno, int numeroDos)
 {
 
+}
+
+void imprimirResultado(int resultado)
+{
+    printf("El resultado es %d \n",resultado);
 }

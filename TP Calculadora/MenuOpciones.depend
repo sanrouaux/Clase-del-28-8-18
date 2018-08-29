@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1535556310 source:c:\users\sanro\onedrive\escritorio\clase-del-28-8-18\tp calculadora\funciones.c
+
+1535557606 source:c:\users\sanro\onedrive\escritorio\clase-del-28-8-18\tp calculadora\main.c
+	<stdio.h>
+	<stdlib.h>
+
