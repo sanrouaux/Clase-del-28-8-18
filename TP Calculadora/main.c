@@ -3,13 +3,13 @@
 
 
 int ingresarNumero (char[]);
+int desplegarMenu (int, int);
 int sumar(int, int);
 int restar(int, int);
 float dividir(int, int);
 int multiplicar(int, int);
 int sacarFactorial(int);
 void imprimirResultado (char[], int);
-void imprimirResultadoDivision (char[], float);
 
 
 int main()
@@ -18,7 +18,6 @@ int main()
     int numeroUno;
     int numeroDos;
     int resultado;
-    float resultadoDivision;
 
 
     do
@@ -26,15 +25,8 @@ int main()
         numeroUno = ingresarNumero("Ingrese el primer numero: ");
         numeroDos = ingresarNumero("Ingrese el segundo numero: ");
 
-        printf("\nQue accion desea ralizar?");
-        printf("\n1. Calcular la suma de %d y %d", numeroUno, numeroDos);
-        printf("\n2. Calcular la resta de %d y %d", numeroUno, numeroDos);
-        printf("\n3. Calcular la division entre %d y %d", numeroUno, numeroDos);
-        printf("\n4. Calcular la multiplicacion entre %d y %d", numeroUno, numeroDos);
-        printf("\n5. Calcular el factorial de %d y de %d", numeroUno, numeroDos);
-        printf("\n6. Salir");
-        printf("\nIngrese una opcion: ");
-        scanf("%d", &opcion);
+
+        opcion = desplegarMenu(numeroUno, numeroDos);
 
 
         switch(opcion)
@@ -56,8 +48,8 @@ int main()
             }
             else
             {
-                resultadoDivision = dividir(numeroUno, numeroDos);
-                imprimirResultadoDivision("El resultado de la division es %d\n", resultado);
+                resultado = dividir(numeroUno, numeroDos);
+                imprimirResultado("El resultado de la division es %d\n", resultado);
             }
             break;
 
@@ -103,10 +95,32 @@ int ingresarNumero(char texto[])
 {
     int numero;
     printf("%s", texto);
-    scanf("%d",&numero);
+    scanf("%d", &numero);
     return numero;
 }
 
+/** \brief
+ *
+ * \param
+ * \param
+ * \return
+ *
+ */
+
+int desplegarMenu (int numeroUno, int numeroDos)
+{
+    int opcion;
+    printf("\nQue accion desea ralizar?");
+    printf("\n1. Calcular la suma de %d y %d", numeroUno, numeroDos);
+    printf("\n2. Calcular la resta de %d y %d", numeroUno, numeroDos);
+    printf("\n3. Calcular la division entre %d y %d", numeroUno, numeroDos);
+    printf("\n4. Calcular la multiplicacion entre %d y %d", numeroUno, numeroDos);
+    printf("\n5. Calcular el factorial de %d y de %d", numeroUno, numeroDos);
+    printf("\n6. Salir");
+    printf("\nIngrese una opcion: ");
+    scanf("%d", &opcion);
+    return opcion;
+}
 
 /** \brief
  *
@@ -201,11 +215,6 @@ int sacarFactorial(int numero)
  */
 
 void imprimirResultado(char texto[], int resultado)
-{
-    printf(texto, resultado);
-}
-
-void imprimirResultadoDivision(char texto[], float resultado)
 {
     printf(texto, resultado);
 }
