@@ -2,14 +2,14 @@
 #include <stdlib.h>
 
 
-int ingresarNumero (char[]);
+int ingresarNumero (void);
 int desplegarMenu (int, int);
 int sumar(int, int);
 int restar(int, int);
 float dividir(int, int);
 int multiplicar(int, int);
 int sacarFactorial(int);
-void imprimirResultado (char[], int);
+void imprimirResultado (float);
 
 
 int main()
@@ -17,13 +17,13 @@ int main()
     int opcion;
     int numeroUno;
     int numeroDos;
-    int resultado;
+    float resultado;
 
 
     do
     {
-        numeroUno = ingresarNumero("Ingrese el primer numero: ");
-        numeroDos = ingresarNumero("Ingrese el segundo numero: ");
+        numeroUno = ingresarNumero();
+        numeroDos = ingresarNumero();
 
 
         opcion = desplegarMenu(numeroUno, numeroDos);
@@ -33,12 +33,12 @@ int main()
         {
         case 1:
             resultado = sumar(numeroUno, numeroDos);
-            imprimirResultado("El resultado de la suma es %d\n", resultado);
+            imprimirResultado(resultado);
             break;
 
         case 2:
             resultado = restar(numeroUno, numeroDos);
-            imprimirResultado("El resultado de la resta es %d\n", resultado);
+            imprimirResultado(resultado);
             break;
 
         case 3:
@@ -48,21 +48,22 @@ int main()
             }
             else
             {
+
                 resultado = dividir(numeroUno, numeroDos);
-                imprimirResultado("El resultado de la division es %d\n", resultado);
+                imprimirResultado(resultado);
             }
             break;
 
         case 4:
             resultado = multiplicar(numeroUno, numeroDos);
-            imprimirResultado("El resultado de la multiplicacion es %d\n", resultado);
+            imprimirResultado(resultado);
             break;
 
         case 5:
             resultado = sacarFactorial(numeroUno);
-            imprimirResultado("El factorial del primer numero es %d\n", resultado);
+            imprimirResultado(resultado);
             resultado = sacarFactorial(numeroDos);
-            imprimirResultado("El factorial del segundo numero es %d\n", resultado);
+            imprimirResultado(resultado);
             break;
 
         case 6:
@@ -91,11 +92,12 @@ int main()
  *
  */
 
-int ingresarNumero(char texto[])
+int ingresarNumero(void)
 {
     int numero;
-    printf("%s", texto);
+    printf("Ingrese un numero: ");
     scanf("%d", &numero);
+    printf("\n");
     return numero;
 }
 
@@ -110,7 +112,7 @@ int ingresarNumero(char texto[])
 int desplegarMenu (int numeroUno, int numeroDos)
 {
     int opcion;
-    printf("\nQue accion desea ralizar?");
+    printf("Que accion desea ralizar?");
     printf("\n1. Calcular la suma de %d y %d", numeroUno, numeroDos);
     printf("\n2. Calcular la resta de %d y %d", numeroUno, numeroDos);
     printf("\n3. Calcular la division entre %d y %d", numeroUno, numeroDos);
@@ -214,7 +216,7 @@ int sacarFactorial(int numero)
  *
  */
 
-void imprimirResultado(char texto[], int resultado)
+void imprimirResultado(float resultado)
 {
-    printf(texto, resultado);
+    printf("\nEl resultado es: %.2f \n", resultado);
 }
