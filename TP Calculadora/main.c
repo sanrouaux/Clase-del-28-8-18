@@ -6,72 +6,154 @@
 int main()
 {
     int opcion;
-    int numeroUno;
-    int numeroDos;
-    float resultado;
+    int numeroUno = 0;
+    int numeroDos = 0;
+    int resultadoSuma;
+    int resultadoResta;
+    float resultadoDivision;
+    int resultadoMultiplicacion;
+    long int resultadoFactorialUno;
+    long int resultadoFactorialDos;
+    int bandera1 = 0;
+    int bandera2 = 0;
+    int bandera3 = 0;
 
 
     do
     {
-        numeroUno = ingresarNumero();
-        numeroDos = ingresarNumero();
-
-
-        opcion = desplegarMenu(numeroUno, numeroDos);
+        printf("----------CALCULADORA-------------\n");
+        printf("--------------MENU----------------\n");
+        printf("1. Ingresar primer operando (A=%d)\n", numeroUno);
+        printf("2. Ingresar segundo operando (B=%d)\n", numeroDos);
+        printf("3. Calcular todas las operaciones\n");
+        printf("4. Informar resultados\n");
+        printf("5. Salir\n");
+        printf("----------------------------------\n");
+        printf("%cQu%c acci%cn desea realizar?\n",168,130,162);
+        printf("Ingrese un n%cmero: ",163);
+        scanf("%d", &opcion);
+        printf("\n");
 
 
         switch(opcion)
         {
         case 1:
-            resultado = sumar(numeroUno, numeroDos);
-            imprimirResultado(resultado);
+            numeroUno = ingresarNumero("Ingrese el primer operando: ");
+            bandera1 = 1;
+            printf("\nHas ingresado el %d\n\n", numeroUno);
+            system("pause");
             break;
 
         case 2:
-            resultado = restar(numeroUno, numeroDos);
-            imprimirResultado(resultado);
-            break;
-
-        case 3:
-            if(numeroDos == 0)
+            if(bandera1 == 0)
             {
-                printf("No es posible dividir por cero\n");
+                printf("Error. A%cn debe ingresar el primer operando. Seleccione la opci%cn 1\n\n",163,162);
+                system("pause");
             }
             else
             {
-
-                resultado = dividir(numeroUno, numeroDos);
-                imprimirResultado(resultado);
+                numeroDos = ingresarNumero("Ingrese el segundo operando: ");
+                bandera2 = 1;
+                printf("\nHas ingresado el %d\n\n", numeroDos);
+                system("pause");
             }
             break;
 
+        case 3:
+            if(bandera2 == 0)
+            {
+                printf("Error. A%cn no ingres%c todos los operandos. Seleccione la opci%cn 1/2\n\n",163,162,162);
+            }
+            else
+            {
+                resultadoSuma = sumar(numeroUno, numeroDos);
+                resultadoResta = restar(numeroUno, numeroDos);
+                if(numeroDos != 0)
+                {
+                    resultadoDivision = dividir(numeroUno, numeroDos);
+                }
+                resultadoMultiplicacion = multiplicar(numeroUno, numeroDos);
+                if(numeroUno >= 0)
+                {
+                    resultadoFactorialUno = calcularFactorial(numeroUno);
+                }
+                if(numeroDos >= 0)
+                {
+                    resultadoFactorialDos = calcularFactorial(numeroDos);
+                }
+                bandera3 = 1;
+                printf("Todas las operaciones fueron realizadas... \n\n");
+            }
+            system("pause");
+            break;
+
         case 4:
-            resultado = multiplicar(numeroUno, numeroDos);
-            imprimirResultado(resultado);
+            if(bandera3 == 0)
+            {
+                printf("Error. A%cn no se realizaron las operaciones. Seleccione la opci%cn 3\n\n",163,162);
+            }
+            else
+            {
+                system("cls");
+                printf("RESULTADOS:\n");
+                printf("El resultado de %d + %d es: %d", numeroUno, numeroDos, resultadoSuma);
+                printf("\nEl resultado de %d - %d es: %d", numeroUno, numeroDos, resultadoResta);
+                if(numeroDos != 0)
+                {
+                    printf("\nEl resultado de %d / %d es: %.2f", numeroUno, numeroDos, resultadoDivision);
+                }
+                else
+                {
+                    printf("\nNo es posible hacer %d / %d", numeroUno, numeroDos);
+                }
+                printf("\nEl resultado de %d * %d es: %d", numeroUno, numeroDos, resultadoMultiplicacion);
+                if(numeroUno >= 0)
+                {
+                    printf("\nEl factorial de %d es: %ld", numeroUno, resultadoFactorialUno);
+                }
+                else
+                {
+                    printf("\nNo se puede calcular el factorial de %d", numeroUno);
+                }
+                if(numeroDos >= 0)
+                {
+                    printf(" y el factorial de %d es: %ld\n\n", numeroDos, resultadoFactorialDos);
+                }
+                else
+                {
+                    printf(" y no se puede calcular el factorial de %d\n\n", numeroDos);
+                }
+
+                resultadoSuma = 0;
+                resultadoResta = 0;
+                resultadoDivision = 0;
+                resultadoMultiplicacion = 0;
+                resultadoFactorialUno = 0;
+                resultadoFactorialDos = 0;
+                numeroUno = 0;
+                numeroDos = 0;
+            }
+            system("pause");
             break;
 
         case 5:
-            resultado = sacarFactorial(numeroUno);
-            imprimirResultado(resultado);
-            resultado = sacarFactorial(numeroDos);
-            imprimirResultado(resultado);
-            break;
-
-        case 6:
+            printf("GRACIAS POR UTILIZAR LA CALCULADORA. HASTA PRONTO!\n\n");
+            system("pause");
             break;
 
         default:
-            printf("Ingrese una opcion correcta");
+            printf("No ingres%c una opci%cn v%clida\n",162,162,160);
+            system("pause");
 
         }
 
-        system("pause");
         system("cls");
 
     }
-    while(opcion != 6);
+    while(opcion != 5);
 
     return 0;
+
 }
 
 

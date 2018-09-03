@@ -1,54 +1,30 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include "miLibreria.h"
 
-/** \brief
+
+/** \brief pide un número al usuario y lo retorna
  *
- * \param
- * \param
- * \return
+ * \param mensaje[] char mensaje que será mostrado al usuario
+ * \return int número entero ingresado por el usuario
  *
  */
-
-int ingresarNumero(void)
+int ingresarNumero(char mensaje[])
 {
     int numero;
-    printf("Ingrese un numero: ");
+    printf("%s", mensaje);
     scanf("%d", &numero);
-    printf("\n");
     return numero;
 }
 
-/** \brief
+
+/** \brief realiza la suma de dos números enteros
  *
- * \param
- * \param
- * \return
+ * \param numeroUno int primer operando de la suma
+ * \param numeroDos int segundo operando de la suma
+ * \return int resultado de la suma
  *
  */
-
-int desplegarMenu (int numeroUno, int numeroDos)
-{
-    int opcion;
-    printf("Que accion desea ralizar?");
-    printf("\n1. Calcular la suma de %d y %d", numeroUno, numeroDos);
-    printf("\n2. Calcular la resta de %d y %d", numeroUno, numeroDos);
-    printf("\n3. Calcular la division entre %d y %d", numeroUno, numeroDos);
-    printf("\n4. Calcular la multiplicacion entre %d y %d", numeroUno, numeroDos);
-    printf("\n5. Calcular el factorial de %d y de %d", numeroUno, numeroDos);
-    printf("\n6. Salir");
-    printf("\nIngrese una opcion: ");
-    scanf("%d", &opcion);
-    return opcion;
-}
-
-/** \brief
- *
- * \param
- * \param
- * \return
- *
- */
-
 int sumar(int numeroUno, int numeroDos)
 {
     int resultado;
@@ -57,14 +33,13 @@ int sumar(int numeroUno, int numeroDos)
 }
 
 
-/** \brief
+/** \brief realiza una resta entre dos números enteros
  *
- * \param
- * \param
- * \return
+ * \param numeroUno int primer operando de la resta
+ * \param numeroDos int segundo operando de la resta
+ * \return int resultado de la resta
  *
  */
-
 int restar(int numeroUno, int numeroDos)
 {
     int resultado;
@@ -73,14 +48,13 @@ int restar(int numeroUno, int numeroDos)
 }
 
 
-/** \brief
+/** \brief realiza una división entre dos números enteros
  *
- * \param
- * \param
- * \return
+ * \param numeroUno int dividendo
+ * \param numeroDos int divisor
+ * \return float cociente
  *
  */
-
 float dividir(int numeroUno, int numeroDos)
 {
     float resultado;
@@ -88,14 +62,14 @@ float dividir(int numeroUno, int numeroDos)
     return resultado;
 }
 
-/** \brief
+
+/** \brief multiplica dos números enteros
  *
- * \param
- * \param
- * \return
+ * \param numeroUno int primer factor de la multiplicación
+ * \param numeroDos int segundo factor de la multiplicación
+ * \return int producto de la multiplicación
  *
  */
-
 int multiplicar(int numeroUno, int numeroDos)
 {
     int resultado;
@@ -103,39 +77,23 @@ int multiplicar(int numeroUno, int numeroDos)
     return resultado;
 }
 
-/** \brief
+
+/** \brief calcula el factorial de un número entero
  *
- * \param
- * \param
- * \return
+ * \param numero int número del cual se calculará el factorial
+ * \return long int resultado de la operación
  *
  */
-
-int sacarFactorial(int numero)
+long int calcularFactorial(int numero)
 {
-    int resultado;
-    if(numero == 1)
+    long int resultado = 1;
+    for(int i = numero; i > 0; i--)
     {
-        return 1;
+        resultado *= i;
     }
-    else
-    {
-        resultado = numero * sacarFactorial(numero-1);
-        return resultado;
-    }
+    return resultado;
+
 }
 
-/** \brief
- *
- * \param
- * \param
- * \return
- *
- */
-
-void imprimirResultado(float resultado)
-{
-    printf("\nEl resultado es: %.2f \n", resultado);
-}
 
 
