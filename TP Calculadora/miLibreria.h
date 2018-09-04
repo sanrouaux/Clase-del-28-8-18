@@ -1,7 +1,8 @@
-int ingresarNumero (char[]);
+float ingresarNumero (char[]);
 int desplegarMenu (int, int);
-int sumar(int, int);
-int restar(int, int);
-float dividir(int, int);
-int multiplicar(int, int);
-long int calcularFactorial(int);
+float sumar(float, float);
+float restar(float, float);
+float dividir(float, float);
+float multiplicar(float, float);
+long int calcularFactorial(float);
+int esDecimal(float);

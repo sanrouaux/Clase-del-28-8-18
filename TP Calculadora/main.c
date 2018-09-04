@@ -6,12 +6,12 @@
 int main()
 {
     int opcion;
-    int numeroUno = 0;
-    int numeroDos = 0;
-    int resultadoSuma;
-    int resultadoResta;
+    float numeroUno;
+    float numeroDos;
+    float resultadoSuma;
+    float resultadoResta;
     float resultadoDivision;
-    int resultadoMultiplicacion;
+    float resultadoMultiplicacion;
     long int resultadoFactorialUno;
     long int resultadoFactorialDos;
     int bandera1 = 0;
@@ -23,8 +23,8 @@ int main()
     {
         printf("----------CALCULADORA-------------\n");
         printf("--------------MENU----------------\n");
-        printf("1. Ingresar primer operando (A=%d)\n", numeroUno);
-        printf("2. Ingresar segundo operando (B=%d)\n", numeroDos);
+        printf("1. Ingresar primer operando (A=%.2f)\n", numeroUno);
+        printf("2. Ingresar segundo operando (B=%.2f)\n", numeroDos);
         printf("3. Calcular todas las operaciones\n");
         printf("4. Informar resultados\n");
         printf("5. Salir\n");
@@ -40,7 +40,7 @@ int main()
         case 1:
             numeroUno = ingresarNumero("Ingrese el primer operando: ");
             bandera1 = 1;
-            printf("\nHas ingresado el %d\n\n", numeroUno);
+            printf("\nHas ingresado el %.2f\n\n", numeroUno);
             system("pause");
             break;
 
@@ -54,7 +54,7 @@ int main()
             {
                 numeroDos = ingresarNumero("Ingrese el segundo operando: ");
                 bandera2 = 1;
-                printf("\nHas ingresado el %d\n\n", numeroDos);
+                printf("\nHas ingresado el %.2f\n\n", numeroDos);
                 system("pause");
             }
             break;
@@ -73,11 +73,11 @@ int main()
                     resultadoDivision = dividir(numeroUno, numeroDos);
                 }
                 resultadoMultiplicacion = multiplicar(numeroUno, numeroDos);
-                if(numeroUno >= 0)
+                if(numeroUno >= 0 && esDecimal(numeroUno) == 0)
                 {
                     resultadoFactorialUno = calcularFactorial(numeroUno);
                 }
-                if(numeroDos >= 0)
+                if(numeroDos >= 0 && esDecimal(numeroDos) == 0)
                 {
                     resultadoFactorialDos = calcularFactorial(numeroDos);
                 }
@@ -96,32 +96,32 @@ int main()
             {
                 system("cls");
                 printf("RESULTADOS:\n");
-                printf("El resultado de %d + %d es: %d", numeroUno, numeroDos, resultadoSuma);
-                printf("\nEl resultado de %d - %d es: %d", numeroUno, numeroDos, resultadoResta);
+                printf("El resultado de %.2f + %.2f es: %.2f", numeroUno, numeroDos, resultadoSuma);
+                printf("\nEl resultado de %.2f - %.2f es: %.2f", numeroUno, numeroDos, resultadoResta);
                 if(numeroDos != 0)
                 {
-                    printf("\nEl resultado de %d / %d es: %.2f", numeroUno, numeroDos, resultadoDivision);
+                    printf("\nEl resultado de %.2f / %.2f es: %.2f", numeroUno, numeroDos, resultadoDivision);
                 }
                 else
                 {
-                    printf("\nNo es posible hacer %d / %d", numeroUno, numeroDos);
+                    printf("\nNo es posible hacer %.2f / %.2f", numeroUno, numeroDos);
                 }
-                printf("\nEl resultado de %d * %d es: %d", numeroUno, numeroDos, resultadoMultiplicacion);
-                if(numeroUno >= 0)
+                printf("\nEl resultado de %.2f * %.2f es: %.2f", numeroUno, numeroDos, resultadoMultiplicacion);
+                if(numeroUno >= 0 && esDecimal(numeroUno) == 0)
                 {
-                    printf("\nEl factorial de %d es: %ld", numeroUno, resultadoFactorialUno);
-                }
-                else
-                {
-                    printf("\nNo se puede calcular el factorial de %d", numeroUno);
-                }
-                if(numeroDos >= 0)
-                {
-                    printf(" y el factorial de %d es: %ld\n\n", numeroDos, resultadoFactorialDos);
+                    printf("\nEl factorial de %.2f es: %ld", numeroUno, resultadoFactorialUno);
                 }
                 else
                 {
-                    printf(" y no se puede calcular el factorial de %d\n\n", numeroDos);
+                    printf("\nNo se puede calcular el factorial de %.2f", numeroUno);
+                }
+                if(numeroDos >= 0 && esDecimal(numeroDos) == 0)
+                {
+                    printf(" y el factorial de %.2f es: %ld\n\n", numeroDos, resultadoFactorialDos);
+                }
+                else
+                {
+                    printf(" y no se puede calcular el factorial de %.2f\n\n", numeroDos);
                 }
 
                 resultadoSuma = 0;

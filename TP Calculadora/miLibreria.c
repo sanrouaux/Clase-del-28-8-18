@@ -9,11 +9,11 @@
  * \return int número entero ingresado por el usuario
  *
  */
-int ingresarNumero(char mensaje[])
+float ingresarNumero(char mensaje[])
 {
-    int numero;
+    float numero;
     printf("%s", mensaje);
-    scanf("%d", &numero);
+    scanf("%f", &numero);
     return numero;
 }
 
@@ -25,9 +25,9 @@ int ingresarNumero(char mensaje[])
  * \return int resultado de la suma
  *
  */
-int sumar(int numeroUno, int numeroDos)
+float sumar(float numeroUno, float numeroDos)
 {
-    int resultado;
+    float resultado;
     resultado = numeroUno + numeroDos;
     return resultado;
 }
@@ -40,9 +40,9 @@ int sumar(int numeroUno, int numeroDos)
  * \return int resultado de la resta
  *
  */
-int restar(int numeroUno, int numeroDos)
+float restar(float numeroUno, float numeroDos)
 {
-    int resultado;
+    float resultado;
     resultado = numeroUno - numeroDos;
     return resultado;
 }
@@ -55,10 +55,10 @@ int restar(int numeroUno, int numeroDos)
  * \return float cociente
  *
  */
-float dividir(int numeroUno, int numeroDos)
+float dividir(float numeroUno, float numeroDos)
 {
     float resultado;
-    resultado = (float)numeroUno / (float)numeroDos;
+    resultado = numeroUno / numeroDos;
     return resultado;
 }
 
@@ -70,9 +70,9 @@ float dividir(int numeroUno, int numeroDos)
  * \return int producto de la multiplicación
  *
  */
-int multiplicar(int numeroUno, int numeroDos)
+float multiplicar(float numeroUno, float numeroDos)
 {
-    int resultado;
+    float resultado;
     resultado = numeroUno * numeroDos;
     return resultado;
 }
@@ -84,10 +84,12 @@ int multiplicar(int numeroUno, int numeroDos)
  * \return long int resultado de la operación
  *
  */
-long int calcularFactorial(int numero)
+long int calcularFactorial(float numero)
 {
+    int numeroEntero;
+    numeroEntero = (int)numero;
     long int resultado = 1;
-    for(int i = numero; i > 0; i--)
+    for(int i = numeroEntero; i > 0; i--)
     {
         resultado *= i;
     }
@@ -96,4 +98,24 @@ long int calcularFactorial(int numero)
 }
 
 
-
+/** \brief
+ *
+ * \param numero float
+ * \return int
+ *
+ */
+int esDecimal(float numero)
+{
+    int respuesta;
+    int numeroEntero;
+    numeroEntero = (int)numero;
+    if(numero-numeroEntero != 0)
+    {
+        respuesta = 1;
+    }
+    else
+    {
+        respuesta = 0;
+    }
+    return respuesta;
+}
